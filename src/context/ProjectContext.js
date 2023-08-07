@@ -4,7 +4,7 @@ const initialState = {
   projects: [],
 };
 
-export const projectsReducer = (state, action) => {
+export const projectReducer = (state, action) => {
   switch (action.type) {
     case "SET_PROJECTS":
       return {
@@ -42,10 +42,9 @@ export const projectsReducer = (state, action) => {
   }
 };
 
-export const ProjectContext = createContext();
-
+export const ProjectContext = createContext(); //main context
 export const ProjectContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(projectsReducer, initialState);
+  const [state, dispatch] = useReducer(projectReducer, initialState);
 
   return (
     <ProjectContext.Provider value={{ ...state, dispatch }}>
@@ -53,3 +52,5 @@ export const ProjectContextProvider = ({ children }) => {
     </ProjectContext.Provider>
   );
 };
+
+//import createContext,create ProjectContext call createCOntext, create ProjectContextProvider then return provider ,declire state with useReducer(reducer,initalState) and return arry [state,dispatch]   , provider value added, top declire initalState, create projectReducer function, action= type--"CREATE_PROJECT" / payload-- data

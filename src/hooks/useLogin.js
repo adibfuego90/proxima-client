@@ -4,7 +4,6 @@ import { useAuthContext } from "./useAuthContext";
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const { dispatch } = useAuthContext();
 
   const login = async (email, password) => {
@@ -16,30 +15,29 @@ export const useLogin = () => {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       }
     );
-
     const json = await res.json();
 
-    // res.ok === false
+    //res.ok===false
     if (!res.ok) {
       setLoading(false);
       setError(json.error);
     }
 
-    // res.ok === true
+    //res.ok===true
     if (res.ok) {
-      // update auth context
+      //update auth content
+      // console.log(json);
       dispatch({ type: "LOGIN", payload: json });
-      // save user to local storage
+      //save user to local storage
       localStorage.setItem("user", JSON.stringify(json));
 
       setLoading(false);
     }
   };
-
   return { login, error, loading };
 };

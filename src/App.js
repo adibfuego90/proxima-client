@@ -1,16 +1,15 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
   const { user } = useAuthContext();
-
   return (
-    <div className="app bg-slate-900 text-slate-100 min-h-screen">
+    <div className="app bg-gray-700 text-slate-100 min-h-screen">
       <Navbar />
       <Routes>
         <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />

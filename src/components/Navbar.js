@@ -7,16 +7,15 @@ const Navbar = () => {
 
   const { logout } = useLogout();
 
-  const handleLogout = () => {
+  const handleLOgout = () => {
     logout();
   };
 
   return (
-    <div className="navbar container mx-auto h-20 flex items-center justify-between border-b border-sky-900">
-      <Link to="/" className="logo text-2xl font-medium text-sky-400">
+    <div className="navbar container mx-auto h-20 flex items-center border-b border-3 border-sky-600 justify-around">
+      <Link className="logo text-2xl font-medium text-sky-400" to="/">
         Proxima
       </Link>
-
       <nav className="flex gap-5">
         {!user && (
           <div className="flex gap-5">
@@ -24,7 +23,7 @@ const Navbar = () => {
               Login
             </Link>
             <Link to="/signup" className="hover:text-sky-400 duration-300">
-              Signup
+              Sign up
             </Link>
           </div>
         )}
@@ -33,10 +32,9 @@ const Navbar = () => {
           <div className="flex gap-5 items-center">
             <span>{user.email}</span>
             <button
-              onClick={handleLogout}
+              onClick={handleLOgout}
               type="submit"
-              className="bg-rose-500 text-white py-3 px-5 rounded-lg hover:bg-sky-50 hover:text-slate-900 duration-300"
-            >
+              className="bg-rose-500 text-white rounded-lg py-2 px-5 hover:bg-sky-50 duration-300 hover:text-slate-900">
               Logout
             </button>
           </div>
